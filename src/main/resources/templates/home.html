@@ -1,0 +1,19 @@
+
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="layout/main.html">
+    <div layout:fragment="fragment">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4" th:each="car : ${cars}">
+                    <div class="card">
+                        <h2 class="card-title" th:text="${car.getModel()}"></h2>
+                        <div class="card-body">
+                            <h3 class="card-text" th:text="${car.getPrice()} + 'tenge'"></h3>
+                            <h3 class="card-text" th:text="${car.getYear()}"></h3>
+                            <a class="btn btn-info" th:href="@{'/car/details?id=' + ${car.getId()}}">DETAILS</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</html>

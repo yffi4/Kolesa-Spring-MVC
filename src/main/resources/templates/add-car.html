@@ -1,0 +1,39 @@
+
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="layout/main.html">
+
+    <div class="container" layout:fragment="fragment">
+        <div class="row">
+            <form th:action="@{'/car/add-car'}" method="post">
+                <div class="form-group">
+                    <label class="form-label">MODEL:</label>
+                    <input type="text" class="form-control" name="model">
+                </div>
+                <div class="form-group">
+                    <label class="form-label">YEAR:</label>
+                    <input type="number" class="form-control" name="year">
+                </div>
+                <div class="form-group">
+                    <label class="form-label">PRICE:</label>
+                    <input type="number" class="form-control" name="price">
+                </div>
+                <div class="form-group">
+                    <label class="form-label">CHOOSE OWNER:</label>
+                    <select class="form-control" name="ownerId">
+                        <option th:each="o : ${owners}" th:text="${o.getFullName()}" th:value="${o.getId()}"></option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">CHOOSE COUNTRIES:</label>
+                    <div class="form-check" th:each="c : ${countries}">
+                        <input type="checkbox" class="form-check-input" name="countryId" th:value="${c.getId()}">
+                        <label class="form-check-label" th:text="${c.getName() + '/' + c.getCapital()}"></label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <button class="btn btn-info">ADD CAR</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+</html>
